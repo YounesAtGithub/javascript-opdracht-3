@@ -27,16 +27,16 @@ const grades = [6, 8, 5, 7, 7, 4, 6, 8, 8, 3, 6, 8, 5, 6];
 
 
 
-// let highGradesCount = 0
-//
-//     for (let i = 0; i < grades.length; i++) {
-//
-//         if (grades[i] >= 8) {
-//             highGradesCount = highGradesCount + 1}
-//
-//     }
-//
-// console.log(highGradesCount)
+let highGradesCount = 0
+
+    for (let i = 0; i < grades.length; i++) {
+
+        if (grades[i] >= 8) {
+            highGradesCount = highGradesCount + 1}
+
+    }
+
+console.log(highGradesCount)
 
 
 
