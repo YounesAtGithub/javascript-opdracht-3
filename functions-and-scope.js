@@ -1,8 +1,10 @@
-// Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken. Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
+// Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken.
+// Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
-const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+const grades = [6, 8, 5, 7, 7, 4, 6, 8, 8, 3, 6, 8, 5, 6];
+
 
 /* Opdracht  1: Cum Laude */
 
@@ -11,8 +13,37 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf de stapjes om dit te kunnen checken eerst uit en vraag jezelf de volgende dingen af:
 // * Hoe kan ik iedere waarde van de array checken op deze conditie?
 // * Hoe zorg ik ervoor dat dit ook werkt wanneer de array 100 entries bevat?
-// * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
+// * Hoe zorg ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
+
+// STAP 1: VASTSTELLEN OF WAARDE IN [i] GROTER OF GELIJK IS AAN WAARDE 8. UITKOMST: TRUE OF FALSE
+//ALS TRUE DAN 1 OPTELLEN BIJ VARIABLE 'highGrades'
+//ALS FALSE DAN VERDER GAAN MET VASTSTELLEN
+// STAP 2: DE VALUE VAN VARIABELE 'highGrades' TERUGGEVEN AAN GLOBAL SCOPE
+// STAP 3: VALUE UIT FUNCTION LOGGEN NAAR CONSOLE
+
+
+
+
+
+
+let highGradesCount = 0
+
+    for (let i = 0; i < grades.length; i++) {
+
+        if (grades[i] >= 8) {
+            highGradesCount = highGradesCount + 1}
+
+    }
+
+console.log(highGradesCount)
+
+
+
+
+
+
+
 
 // ---- Verwachte uitkomst: 6
 
@@ -21,6 +52,35 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+
+
+
+
+function cumLaude(gradesArray) {
+    let highGradesCount = 0
+
+    for (let i = 0; i < gradesArray.length; i++) {
+
+        if (gradesArray[i] >= 8) {
+            highGradesCount = highGradesCount + 1}
+
+    }
+
+    console.log(highGradesCount)
+
+}
+cumLaude(grades)
+cumLaude([6, 4, 5])
+cumLaude([8, 9, 4, 6, 10])
+console.log('end of script')
+
+
+
+
+
+
+
+
 
 // ---- Verwachte uitkomsten:
 // cumLaude(grades) geeft 6
@@ -37,10 +97,24 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf de stapjes om dit te kunnen berekenen eerst uit en vraag jezelf de volgende dingen af:
 // * Hoe wordt een gemiddelde berekend?
 // * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen?
-// * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
+// * Hoe zorg ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 6.642857142857143
+
+
+
+let sum = 0
+
+for (let i = 0; i < grades.length; i++) {
+    sum = sum + grades[i]
+    average = sum / grades.length
+}
+console.log(average)
+console.log('end of script')
+
+
+
 
 
 /* 2b: Omschrijven tot een herbruikbare functie */
@@ -53,6 +127,30 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+
+
+function calculateAverage(arrayGrade) {
+
+    let sumOffArray = 0
+
+    for (let i = 0; i < arrayGrade.length; i++) {
+
+        sumOffArray = sumOffArray + arrayGrade[i]
+
+        // averageOfArray = totalOffArray / arrayGrade.length
+    }
+    const hetResultaat = sumOffArray / arrayGrade.length
+    console.log('lengte van array is ' + arrayGrade.length + ' getallen groot')
+    console.log(hetResultaat.toFixed(2))
+    console.log('Totaal van de array is ' + sumOffArray)
+    console.log('en dat delen door het aantal is ' + sumOffArray / arrayGrade.length)
+
+
+
+}
+
+
+calculateAverage([1,2,9,1,5,7,7,8,9,10,4,4,3,4,6,7,8,3])
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
@@ -71,6 +169,15 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 9
+let highestRank = 0
+
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] >= highestRank) {
+        highestRank = grades[i]
+    }
+}
+console.log('Het hoogste cijfer uit de array is een ' + highestRank)
+
 
 
 /* 3b: Omschrijven tot een herbruikbare functie */
@@ -82,3 +189,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+function highestGrade(cijfers) {
+    let highestRank = 0
+
+    for (let i = 0; i < cijfers.length; i++) {
+        if (cijfers[i] >= highestRank) {
+            highestRank = cijfers[i]
+        }
+    }
+    console.log('Dit is een functie. Het hoogste cijfer uit de array is een ' + highestRank)
+}
+
+highestGrade([1,1,2,1000])

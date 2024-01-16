@@ -9,7 +9,12 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
-
+function getEmailDomain(email) {
+    const result = email.split("@")
+    return (result[1])
+}
+const checkEmail = getEmailDomain("novi.nlaapjesk@outlook.com")
+// console.log(getEmailDomain("info@meet.nl"))
 
 
 /* Opdracht  2 */
@@ -19,6 +24,18 @@
 // typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
+
+
+switch (checkEmail) {
+    case 'novi-education.nl':
+        console.log('Student');
+        break;
+    case 'novi.nl':
+        console.log('Medewerker');
+        break;
+    default:
+        console.log('Extern');
+}
 
 
 
@@ -34,3 +51,17 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(incomingEmailAdress) {
+    return incomingEmailAdress.includes('@') &&! incomingEmailAdress.includes(',') && (incomingEmailAdress.charAt(incomingEmailAdress.length -1) !== '.')
+}
+
+
+console.log('1. Input younesel@gmail.com is valid so it should return true: ' + checkEmailValidity('younes@gmail.com'))
+console.log('2. Input youneselgmail.com has no @ symbol, so it should return false: ' + checkEmailValidity('younesgmail.com'))
+console.log('3. Input younes,gmail.com has a , symbol, so it should return false: ' + checkEmailValidity('younes,gmail.com'))
+console.log('4. Input younes@gmail.com. has a . symbol at the end of the string, so it should return false: ' + checkEmailValidity('younes@gmail.com.'))
+// console.log('5. If all the requirements are met, the function should return a true')
+
+const checker = checkEmailValidity('bljaat@.')
+console.log(checker)
